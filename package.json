@@ -1,0 +1,27 @@
+{
+  "name": "wsd",
+  "version": "1.0.0",
+  "description": "coding test",
+  "main": "app.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsargod/WSD.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "David Zsargo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zsargod/WSD/issues"
+  },
+  "homepage": "https://github.com/zsargod/WSD#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.12"
+  }
+}
