@@ -1,3 +1,20 @@
-.container {
+.container--main {
     padding: 50px 0;
+}
+
+.container--profile {
+    padding:5%;
+}
+
+.container--profile .img {
+    text-align:center;
+}
+
+.container--profile .details {
+    border-left:3px solid #ded4da;
+}
+
+.container--profile .details p {
+    font-size:15px;
+    font-weight:bold;
 }
