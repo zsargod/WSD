@@ -1,2 +1,4 @@
 .idea/
 node_modules/
+logs/analytics.log
+logs/app.log

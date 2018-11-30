@@ -20,10 +20,13 @@
   },
   "homepage": "https://github.com/zsargod/WSD#readme",
   "dependencies": {
+    "bunyan": "^1.8.12",
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.12",
     "passport": "^0.4.0",
-    "passport-oauth2": "^1.4.0"
+    "passport-oauth2": "^1.4.0",
+    "request": "^2.88.0"
   }
 }

@@ -11,12 +11,12 @@
         <ul class="navbar-nav">
             {{#if user.id }}
                 <li class="nav-item">
-                    <a class="nav-link" href="logout">Logout</a>
+                    <a class="nav-link" href="logout">Sign out</a>
                 </li>
             {{/if }}
             {{#unless user.id }}
                 <li class="nav-item">
-                    <a class="nav-link" href="auth">Log In</a>
+                    <a class="nav-link" data-action="login" href="auth" onclick="signInProcess()">Sign in</a>
                 </li>
             {{/unless }}
         </ul>

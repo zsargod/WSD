@@ -1,16 +1,46 @@
+'use strict';
+
+const request = require('request');
 const passport = require('passport');
 const OAuth2Strategy = require('passport-oauth2').Strategy;
+const keys = require('./keys');
+const profileStorage = require('./profile-storage');
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    let user = profileStorage.fetch(id) || {};
+    done(null, user);
+});
 
 passport.use(
-    new OAuth2Strategy({
-        authorizationURL: 'https://staging-auth.wallstreetdocs.com/oauth/authorize',
-        tokenURL: 'https://staging-auth.wallstreetdocs.com/oauth/token',
-        clientID: process.env.clientId || '',
-        clientSecret: process.env.clientSecret || '',
-        callbackURL: "http://localhost:3000"
-    },
-    function(accessToken, refreshToken, profile, cb) {
-        return cb(null, profile);
+    new OAuth2Strategy(keys.oauth2,
+    async function(accessToken, refreshToken, profile, done) {
+        const options = {
+            url: keys.profileUrl,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        };
+        const ProfilePromise = new Promise((resolve, reject) => {
+            request(options,(error, response, body) => {
+                if (!error && response.statusCode === 200) {
+                    resolve(JSON.parse(body));
+                } else {
+                    reject(error);
+                }
+            });
+        });
+
+        try {
+            profile = await ProfilePromise;
+            profileStorage.save(profile);
+            done(null, profile);
+        } catch (error) {
+            done(error, null);
+        }
     }
 ));
 
