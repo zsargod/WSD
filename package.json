@@ -4,7 +4,7 @@
   "description": "coding test",
   "main": "app.js",
   "scripts": {
-    "test": "test.js"
+    "test": "eslint app.js ./config/*"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,12 @@
     "passport": "^0.4.0",
     "passport-oauth2": "^1.4.0",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-airbnb-standard": "^2.1.6",
+    "eslint-plugin-import": "^2.14.0",
+    "grunt": "^1.0.3"
   }
 }
