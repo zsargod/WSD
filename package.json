@@ -4,7 +4,8 @@
   "description": "coding test",
   "main": "app.js",
   "scripts": {
-    "test": "eslint app.js ./config/*"
+    "eslint": "eslint app.js ./config/*",
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-airbnb-standard": "^2.1.6",
     "eslint-plugin-import": "^2.14.0",
-    "grunt": "^1.0.3"
+    "grunt": "^1.0.3",
+    "jasmine": "^3.3.0"
   }
 }

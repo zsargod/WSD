@@ -9,7 +9,7 @@ const storage = [];
  * @return           Object type user profile
  */
 function save(profile) {
-  if (profile || profile.id) {
+  if (profile && profile.id) {
     const userProfile = this.fetch(profile.id);
 
     if (!userProfile) {
