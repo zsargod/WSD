@@ -15,14 +15,15 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new OAuth2Strategy(keys.oauth2,
-    (async (accessToken, refreshToken, profile, done) => {
+    ((accessToken, refreshToken, profile, done) => {
       const options = {
         url: keys.profileUrl,
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       };
-      const ProfilePromise = new Promise((resolve, reject) => {
+
+      new Promise((resolve, reject) => {
         request(options, (error, response, body) => {
           if (!error && response.statusCode === 200) {
             resolve(JSON.parse(body));
@@ -30,15 +31,10 @@ passport.use(
             reject(error);
           }
         });
-      });
-
-      try {
-        const fetchedProfile = await ProfilePromise;
+      }).then((fetchedProfile) => {
         profileStorage.save(fetchedProfile);
         done(null, fetchedProfile);
-      } catch (error) {
-        done(error, null);
-      }
+      }, error => done(error, null));
     })),
 );
 
