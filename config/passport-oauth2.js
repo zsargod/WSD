@@ -35,7 +35,7 @@ passport.use(
         profileStorage.save(fetchedProfile);
         done(null, fetchedProfile);
       }, error => done(error, null));
-    })),
+    }))
 );
 
 module.exports = passport;
